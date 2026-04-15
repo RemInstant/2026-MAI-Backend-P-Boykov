@@ -1,0 +1,54 @@
+ab -l -n 5000 -c 50 http://localhost:8080/password
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        Jetty(12.1.8)
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /password
+Document Length:        Variable
+
+Concurrency Level:      50
+Time taken for tests:   5.222 seconds
+Complete requests:      5000
+Failed requests:        0
+Total transferred:      559774 bytes
+HTML transferred:       65289 bytes
+Requests per second:    957.57 [#/sec] (mean)
+Time per request:       52.215 [ms] (mean)
+Time per request:       1.044 [ms] (mean, across all concurrent requests)
+Transfer rate:          104.69 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.6      0       6
+Processing:    50   51   1.7     50      63
+Waiting:       49   51   1.5     50      63
+Total:         50   51   1.9     51      64
+
+Percentage of the requests served within a certain time (ms)
+  50%     51
+  66%     51
+  75%     52
+  80%     52
+  90%     54
+  95%     56
+  98%     58
+  99%     60
+ 100%     64 (longest request)

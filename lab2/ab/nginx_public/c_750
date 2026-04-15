@@ -1,0 +1,54 @@
+ab -n 10000 -c 750 http://localhost/public/bulki.jpg
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        nginx/1.24.0
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /public/bulki.jpg
+Document Length:        1795030 bytes
+
+Concurrency Level:      750
+Time taken for tests:   10.712 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      17952800000 bytes
+HTML transferred:       17950300000 bytes
+Requests per second:    933.52 [#/sec] (mean)
+Time per request:       803.413 [ms] (mean)
+Time per request:       1.071 [ms] (mean, across all concurrent requests)
+Transfer rate:          1636646.25 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    6   2.7      5      21
+Processing:    23  785 162.0    759    1083
+Waiting:        0   25  63.0      6     330
+Total:         43  791 161.0    765    1092
+
+Percentage of the requests served within a certain time (ms)
+  50%    765
+  66%    847
+  75%    891
+  80%    905
+  90%   1006
+  95%   1027
+  98%   1037
+  99%   1047
+ 100%   1092 (longest request)
