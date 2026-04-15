@@ -10,7 +10,7 @@ public class LRUCache {
 
   public LRUCache(int capacity) {
     this.capacity = capacity;
-    this.storage = LinkedHashMap.newLinkedHashMap(capacity);
+    this.storage = new LinkedHashMap<>(capacity, 1f, true);
   }
 
   public String get(String key) {
