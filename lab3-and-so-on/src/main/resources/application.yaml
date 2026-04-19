@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ProgramEngineering
+  datasource:
+    url: jdbc:postgresql://localhost:49081/app_db
+    username: service_user
+    password: securePassword
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port: 49080
