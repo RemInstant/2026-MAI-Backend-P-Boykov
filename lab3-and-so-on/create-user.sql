@@ -1,0 +1,3 @@
+CREATE USER service_user WITH PASSWORD 'securePassword';
+GRANT USAGE, CREATE ON SCHEMA public TO service_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO service_user;

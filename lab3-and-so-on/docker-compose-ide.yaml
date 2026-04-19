@@ -1,0 +1,16 @@
+services:
+
+  postgres:
+    image: postgres:latest
+    container_name: program-engineering-postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: app_db
+    ports:
+      - '49081:5432'
+    volumes:
+      - ide_pg_data:/var/lib/postgresql/data
+
+volumes:
+  ide_pg_data:
