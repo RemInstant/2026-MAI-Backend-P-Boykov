@@ -1,0 +1,1 @@
+sudo nginx -g "daemon off;" -p /home/remi/Code/IdeaProjects/MAI/ProgramEngineering/lab3-and-so-on -c nginx/nginx.conf
