@@ -56,7 +56,7 @@ public class OrderController {
                     1L,
                     "title"
                 ),
-                OffsetDateTime.now()
+                OffsetDateTime.now().withNano(0)
             )
         )
     );
