@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "seance")
@@ -25,8 +23,5 @@ public class Seance {
   private Movie movie;
 
   private OffsetDateTime startDateTime;
-
-  @OneToMany(mappedBy = "seance")
-  private Set<Order> orders = new LinkedHashSet<>();
 
 }
