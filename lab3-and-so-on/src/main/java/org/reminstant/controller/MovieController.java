@@ -58,7 +58,7 @@ public class MovieController {
                     List.of(
                         new SeanceShortDataDto(
                             1L,
-                            OffsetDateTime.now()
+                            OffsetDateTime.now().withNano(0)
                         )
                     )
                 )
