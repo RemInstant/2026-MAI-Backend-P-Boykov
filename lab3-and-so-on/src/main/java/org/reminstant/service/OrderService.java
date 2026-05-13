@@ -14,8 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
 
-  private final CinemaRepository cinemaRepository;
-  private final MovieRepository movieRepository;
   private final SeanceRepository seanceRepository;
   private final OrderRepository orderRepository;
   private final UserInfoRepository userInfoRepository;

@@ -10,10 +10,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserInfoService {
 
-  private final CinemaRepository cinemaRepository;
-  private final MovieRepository movieRepository;
-  private final SeanceRepository seanceRepository;
-  private final OrderRepository orderRepository;
   private final UserInfoRepository userInfoRepository;
 
   public UserInfo getUserInfo(long userId) {
