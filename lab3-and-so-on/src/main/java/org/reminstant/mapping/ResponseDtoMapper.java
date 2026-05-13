@@ -94,6 +94,14 @@ public class ResponseDtoMapper {
     );
   }
 
+  public static MovieFullDataListDto toMovieFullDataListDto(List<Movie> movieList) {
+    return new MovieFullDataListDto(
+        movieList.stream()
+            .map(ResponseDtoMapper::toMovieFullDataDto)
+            .toList()
+    );
+  }
+
   public static SeanceByMovieDto toSeanceByMovieDto(List<Seance> seances) {
     return new SeanceByMovieDto(
         seances.stream()

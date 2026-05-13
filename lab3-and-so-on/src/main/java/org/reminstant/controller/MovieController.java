@@ -49,11 +49,11 @@ public class MovieController {
   }
 
   @GetMapping("movie/search")
-  ResponseEntity<MovieShortDataListDto> getMoviesByQueryString(
+  ResponseEntity<MovieFullDataListDto> getMoviesByQueryString(
       @RequestParam String queryString
   ) {
     return ResponseEntity.ok(
-        ResponseDtoMapper.toMovieShortDataListDto(
+        ResponseDtoMapper.toMovieFullDataListDto(
             movieService.getMovieByQueryString(queryString)
         )
     );
