@@ -1,28 +1,37 @@
 package org.reminstant.controller;
 
+import lombok.AllArgsConstructor;
 import org.reminstant.dto.response.CinemaFullDataDto;
 import org.reminstant.dto.response.MovieFullDataDto;
 import org.reminstant.dto.request.CreateCinemaRequest;
 import org.reminstant.dto.request.CreateMovieRequest;
 import org.reminstant.dto.request.CreateSeanceRequest;
-import org.reminstant.dto.response.SeanceShortDataDto;
+import org.reminstant.dto.response.SeanceFullDataDto;
+import org.reminstant.mapping.ResponseDtoMapper;
+import org.reminstant.service.CinemaService;
+import org.reminstant.service.MovieService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@AllArgsConstructor
 public class AdminController {
+
+  private final CinemaService cinemaService;
+  private final MovieService movieService;
 
   @PostMapping("/admin/cinema")
   ResponseEntity<CinemaFullDataDto> createCinema(
       @RequestBody CreateCinemaRequest request
   ) {
     return ResponseEntity.ok(
-        new CinemaFullDataDto(
-            1L,
-            request.getName(),
-            request.getAddress(),
-            request.getLatitude(),
-            request.getLongitude()
+        ResponseDtoMapper.toCinemaFullDataDto(
+            cinemaService.createCinema(
+                request.getName(),
+                request.getAddress(),
+                request.getLatitude(),
+                request.getLongitude()
+            )
         )
     );
   }
@@ -32,23 +41,27 @@ public class AdminController {
       @RequestBody CreateMovieRequest request
   ) {
     return ResponseEntity.ok(
-        new MovieFullDataDto(
-            1L,
-            request.getTitle(),
-            request.getDescription(),
-            request.getDuration()
+        ResponseDtoMapper.toMovieFullDataDto(
+            movieService.createMovie(
+                request.getTitle(),
+                request.getDescription(),
+                request.getDuration()
+            )
         )
     );
   }
 
   @PostMapping("/admin/seance")
-  ResponseEntity<SeanceShortDataDto> createSeance(
+  ResponseEntity<SeanceFullDataDto> createSeance(
       @RequestBody CreateSeanceRequest request
   ) {
     return ResponseEntity.ok(
-        new SeanceShortDataDto(
-            1L,
-            request.getStartDateTime()
+        ResponseDtoMapper.toSeanceFullDataDto(
+            movieService.createSeance(
+                request.getCinemaId(),
+                request.getMovieId(),
+                request.getStartDateTime()
+            )
         )
     );
   }
