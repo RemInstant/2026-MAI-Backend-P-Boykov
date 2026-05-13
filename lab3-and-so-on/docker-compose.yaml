@@ -1,0 +1,56 @@
+services:
+
+  postgres:
+    image: postgres:latest
+    container_name: program-engineering-postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: app_db
+    volumes:
+      - ide_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      start_period: 10s
+      retries: 5
+      interval: 10s
+      timeout: 5s
+
+  server:
+    build: .
+    pull_policy: build
+    image: reminstant:program-engineering-server
+    container_name: program-engineering-server
+    environment:
+      SPRING_PROFILES_ACTIVE: "container"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      start_period: 10s
+      retries: 5
+      interval: 10s
+      timeout: 5s
+
+  nginx:
+    image: nginx:latest
+    container_name: program-engineering-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:80/health/ || exit 1"]
+      start_period: 10s
+      retries: 5
+      interval: 10s
+      timeout: 5s
+
+volumes:
+  ide_pg_data:
